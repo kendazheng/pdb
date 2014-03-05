@@ -1,4 +1,6 @@
 # Django settings for pdbweb project.
+import os
+ROOT_DIR = os.path.split(os.path.abspath(__file__))[0]
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -72,6 +74,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(ROOT_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -111,6 +114,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(ROOT_DIR, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -124,6 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'pdbweb.index',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

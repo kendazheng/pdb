@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'pdbweb.views.home', name='home'),
     # url(r'^pdbweb/', include('pdbweb.foo.urls')),
 
+    url(r'^$', include('pdbweb.index.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
