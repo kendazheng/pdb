@@ -141,6 +141,14 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(name)s %(pathname)s %(module)s %(lineno)d [%(levelname)s] %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
@@ -151,7 +159,14 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'default':{
+            'level': 'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(ROOT_DIR + '/logs/','default.log'),
+            'formatter':'verbose',
         }
+        
     },
     'loggers': {
         'django.request': {
@@ -159,5 +174,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'pdbweb': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }  
     }
 }
+
+
