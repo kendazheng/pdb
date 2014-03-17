@@ -14,3 +14,6 @@ class EntertainmentView(TemplateView):
         self.logger.error('aaa')
         return render_to_response(self.template_name,{})
     
+
+def entertainment(reqeust):
+    return render_to_response('entertainment/entertainment.html',{})
