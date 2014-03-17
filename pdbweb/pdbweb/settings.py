@@ -129,6 +129,14 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'pdbweb.index',
+    'pdbweb.entertainment',
+    'pdbweb.sport',
+    'pdbweb.culture',
+    'pdbweb.travel',
+    'pdbweb.technology',
+    'pdbweb.food',
+    'pdbweb.fashion',
+    'pdbweb.others'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

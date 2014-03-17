@@ -13,8 +13,3 @@ class IndexView(TemplateView):
         self.logger.debug('aaa')
         self.logger.error('aaa')
         return render_to_response(self.template_name,{})
-        
-
-def index(request):
-    #return HttpResponse('ss')
-    return render_to_response('index/index.html',{})
