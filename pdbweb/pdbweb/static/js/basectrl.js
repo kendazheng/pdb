@@ -37,6 +37,7 @@ basectrls.controller('LoginCtrl', ['$scope', '$modalInstance', function($scope, 
 }]);
 
 basectrls.controller('Registry', ['$scope', '$modalInstance', function($scope, $modalInstance){
+    //$scope.alerts = [{'msg':'aaaaaaaaaaaa','type':'alert-warning'}];
     $scope.alerts = [];
     $scope.cancel = function(){
         $modalInstance.close(undefined);
