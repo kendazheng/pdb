@@ -5,7 +5,7 @@
   </div>
   <div class="modal-body">
     <alert ng-repeat="alert in alerts" class="{[{ alert.type }]}" close="closeAlert($index)">{[{ alert.msg }]}</alert>
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" novalidate>
       <div class="form-group">
         <label class="col-sm-4 control-label"><strong>{[{ "Username" }]}</strong></label>
         <div class="col-sm-6">
@@ -15,19 +15,19 @@
       <div class="form-group">
         <label class="col-sm-4 control-label"><strong>{[{ "Email" }]}</strong></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" ng-model="email" placeholder="(Required)" required autofocus />
+          <input type="email" class="form-control" ng-model="email" placeholder="(Required)" required />
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-4 control-label"><strong>{[{ "Password" }]}</strong></label>
         <div class="col-sm-6">
-          <input type="password" class="form-control" ng-model="password" placeholder="(Required)" required autofocus />
+          <input type="password" class="form-control" ng-model="password" placeholder="(Required)" required />
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-4 control-label"><strong>{[{ "Password Again" }]}</strong></label>
         <div class="col-sm-6">
-          <input type="password" class="form-control" ng-model="password_again" placeholder="(Required)" required autofocus />
+          <input type="password" class="form-control" ng-model="password_again" placeholder="(Required)" required />
         </div>
       </div>
     </form>
