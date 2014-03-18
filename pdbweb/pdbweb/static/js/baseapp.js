@@ -1,4 +1,4 @@
-var baseapp = angular.module('BaseApp', ['ui.bootstrap','ngRoute','BaseCtrls']);
+var baseapp = angular.module('BaseApp', ['ui.bootstrap','BaseCtrls']);
 baseapp.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{');
     $interpolateProvider.endSymbol('}]}');

@@ -1,21 +1,21 @@
 <div role="dialog">
   <div class="modal-header">
     <a class="close" ng-click="cancel()">&times;</a>
-    <h3>{[{ "Login Dialog" }]}</h3>
+    <h3>Login Dialog</h3>
   </div>
   <div class="modal-body">
-    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{[{ alert.msg }]}</alert>
+    <alert ng-repeat="alert in alerts" class="{[{ alert.type }]}" close="closeAlert($index)">{[{ alert.msg }]}</alert>
     <form class="form-horizontal" role="form">
       <div class="form-group">
-        <label class="col-sm-4 control-label"><strong>{[{ "Username" }]}</strong></label>
+        <label class="col-sm-4 control-label"><strong>Username</strong></label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" ng-model="username" placeholder="(Required)" required autofocus />
+          <input type="text" class="form-control" ng-model="input.username" placeholder="(Required)" required autofocus />
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-4 control-label"><strong>{[{ "Password" }]}</strong></label>
+        <label class="col-sm-4 control-label"><strong>Password</strong></label>
         <div class="col-sm-6">
-          <input type="password" class="form-control" ng-model="password" placeholder="(Required)" required autofocus />
+          <input type="password" class="form-control" ng-model="input.password" placeholder="(Required)" required autofocus />
         </div>
       </div>
       <div class="form-group">
@@ -26,7 +26,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">{[{ "Login" }]}</button>
-    <button class="btn btn-warning" ng-click="cancel()">{[{ "Cancel" }]}</button>
+    <button class="btn btn-primary" ng-click="ok()">Login</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
   </div>
 </div>

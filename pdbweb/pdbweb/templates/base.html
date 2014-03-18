@@ -4,19 +4,18 @@
 <head>
   <meta charset='utf-8'>
   <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
-  <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.min.css">
   <!--script src="/static/lib/jquery-2.1.0.min.js"></script-->
   <script src="/static/lib/jquery-1.11.0.min.js"></script>
   <script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="/static/lib/angular.min.js"></script>
   <script src="/static/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
-  <script src="/static/lib/angular-router.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/css/bootstrap.min.css">
   <title>{% block title %}{% endblock %}</title>
   {% block css %}{% endblock %}
   <link rel="stylesheet" type="text/css" href="/static/css/base.css">
-  {% block js %}
   <script src="/static/js/baseapp.js"></script>
   <script src="/static/js/basectrl.js"></script>
+  {% block js %}
   {% endblock %}
 </head>
 <body>

@@ -1,6 +1,5 @@
 var basectrls = angular.module('BaseCtrls', []);
-basectrls.controller('TopCtrl', ['$scope', '$modal', function($scope, $modal){
-    $scope.data = 'aaaa';
+basectrls.controller('TopCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
     var urlHighLight = function(){
         var currentNav = $('.main-nav a').filter(function () {
             var pathname = (this.pathname.charAt(0) == "/") ? this.pathname
@@ -17,13 +16,15 @@ basectrls.controller('TopCtrl', ['$scope', '$modal', function($scope, $modal){
             backdropFade: true,
             controller: 'LoginCtrl',
             templateUrl: '/static/template/login.html'
-        }).result.then();
+        }).result.then(function(user){
+            $http.post();        
+        });
     };
 
     $scope.registry = function(){
         $modal.open({
             backdropFade: true,
-            controller: 'Registry',
+            controller: 'RegistryCtrl',
             templateUrl: '/static/template/registry.html'
         }).result.then();
     };
@@ -33,12 +34,23 @@ basectrls.controller('TopCtrl', ['$scope', '$modal', function($scope, $modal){
 
 basectrls.controller('LoginCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance){
     $scope.alerts = [];
+    $scope.input= {};
     $scope.cancel = function(){
         $modalInstance.close(undefined);
     };
 
     $scope.ok = function(){
-        $modalInstance.close(undefined);
+        if($scope.input.username && $scope.input.password)
+            $modalInstance.close({
+                username: $scope.input.username,
+                password: $scope.input.password
+            });
+        else
+            $scope.alerts.push({
+                'msg':'Username and Password should not be blank!',
+                'type':'alert-danger'
+            });
+            
     };
 
     $scope.closeAlert = function(index){
@@ -50,7 +62,7 @@ basectrls.controller('LoginCtrl', ['$scope', '$modalInstance', function($scope, 
     };
 }]);
 
-basectrls.controller('Registry', ['$scope', '$modalInstance', function($scope, $modalInstance){
+basectrls.controller('RegistryCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance){
     //$scope.alerts = [{'msg':'aaaaaaaaaaaa','type':'alert-warning'}];
     $scope.alerts = [];
     $scope.cancel = function(){
