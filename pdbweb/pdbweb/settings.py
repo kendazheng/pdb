@@ -137,7 +137,8 @@ INSTALLED_APPS = (
     'pdbweb.technology',
     'pdbweb.food',
     'pdbweb.fashion',
-    'pdbweb.others'
+    'pdbweb.others',
+    'pdbweb.api'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
