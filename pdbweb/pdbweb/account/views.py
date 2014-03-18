@@ -1,17 +1,18 @@
 import logging
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
-from django.views.generic import TemplateView
-from django.template import RequestContext
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
-class SportView(TemplateView):
+def login(request):
     logger = logging.getLogger('pdbweb')
-    template_name = 'sport/sport.html'
-    
-    def get(self, request):
-        self.logger.info('aaa')
-        self.logger.debug('aaa')
-        self.logger.error('aaa')
-        return render_to_response(self.template_name,RequestContext(request,{}))
-    
+    username = request.POST.get('username', 'no name')
+    logger.info(username)
+    password = request.POST.get('password', 'no passwd')
+    logger.info(password)
+    user = authenticate(username=username, password=password)
+    if user:
+        login(request, user)
+        return HttpResponse('OK')
+    else:
+        return HttpResponse('Error')

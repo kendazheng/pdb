@@ -17,7 +17,13 @@ basectrls.controller('TopCtrl', ['$scope', '$modal', '$http', function($scope, $
             controller: 'LoginCtrl',
             templateUrl: '/static/template/login.html'
         }).result.then(function(user){
-            $http.post();        
+            $http.post('/account/login/',{'username':'root','password':'123456'})
+                .success(function(res){
+                    console.log(res)
+                })
+                .error(function(res){
+                    console.log(res);
+                });        
         });
     };
 
