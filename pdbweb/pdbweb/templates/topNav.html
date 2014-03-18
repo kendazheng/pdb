@@ -8,19 +8,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="/">Brand</a>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Index</a></li>
+      <ul class="nav main-nav navbar-nav">
+        <li><a href="/">Index</a></li>
         <li><a href="{% url 'entertainment' %}">Entertainment</a></li>
-        <li><a href="/sport/">Sport</a></li>
-        <li><a href="/culture/">Culture</a></li>
-        <li><a href="/travel/">Travel</a></li>
-        <li><a href="/technology/">Tec</a></li>
-        <li><a href="/food/">Food</a></li>
-        <li><a href="/fashion/">Fashion</a></li>
-        <li><a href="/others/">Others</a></li>
+        <li><a href="{% url 'sport' %}">Sport</a></li>
+        <li><a href="{% url 'culture' %}">Culture</a></li>
+        <li><a href="{% url 'travel' %}">Travel</a></li>
+        <li><a href="{% url 'technology' %}">Tec</a></li>
+        <li><a href="{% url 'food' %}">Food</a></li>
+        <li><a href="{% url 'fashion' %}">Fashion</a></li>
+        <li><a href="{% url 'others' %}">Others</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" ng-click=login()>Login</a></li>
