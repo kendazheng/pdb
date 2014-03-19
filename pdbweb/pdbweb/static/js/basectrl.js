@@ -36,9 +36,9 @@ basectrls.controller('TopCtrl', ['$scope', '$modal', '$http', function($scope, $
         }).result.then(function(user){
             $http({
                 method:'POST', 
-                url:'/account/login/',
+                url:'/api/login/',
                 headers:{'Content-type':'application/x-www-form-urlencoded'},
-                data:'username=ddd,password=aaaaa',
+                data:{'username':'root'},
             }).success(function(res){
                 console.log(res)
             }).error(function(res){
