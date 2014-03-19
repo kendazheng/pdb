@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'pdbweb.index',
+    'pdbweb.usercenter',
     'pdbweb.entertainment',
     'pdbweb.sport',
     'pdbweb.culture',

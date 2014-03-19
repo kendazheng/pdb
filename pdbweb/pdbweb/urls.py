@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^pdbweb/', include('pdbweb.foo.urls')),
 
     url(r'^$', include('pdbweb.index.urls')),
+    url(r'^usercenter/$', include('pdbweb.usercenter.urls')),
     url(r'^entertainment/', include('pdbweb.entertainment.urls')),
     url(r'^sport/', include('pdbweb.sport.urls')),
     url(r'^culture/', include('pdbweb.culture.urls')),
