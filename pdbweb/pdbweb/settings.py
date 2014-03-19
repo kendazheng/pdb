@@ -129,7 +129,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'pdbweb.index',
-    'pdbweb.account',
     'pdbweb.entertainment',
     'pdbweb.sport',
     'pdbweb.culture',
@@ -193,4 +192,4 @@ LOGGING = {
     }
 }
 
-
+SESSION_COOKIE_NAME = 'pdbweb'

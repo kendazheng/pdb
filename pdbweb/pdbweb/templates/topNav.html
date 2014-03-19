@@ -24,15 +24,16 @@
       </ul>
       {% if user.is_authenticated %}
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/account/{{ user.username }}/index/">{{ user.username }}</a></li>
-        <li><a href="/account/logout/">Logout</a></li>
+        <li><a href="{% url 'usercenter_index' %}">{{ user.username }}</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
       </ul>
       {% else %}
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" ng-click=login()>Login</a></li>
-        <li><a href="#" ng-click=registry()>Registry</a></li>
+        <li><a href="" ng-click=login()>Login</a></li>
+        <li><a href="" ng-click=registry()>Registry</a></li>
       </ul>
       {% endif %}
     </div>
+    {% csrf_token %}
   </div>
 </div>

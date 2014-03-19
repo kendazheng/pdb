@@ -6,5 +6,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'pdbweb.views.home', name='home'),
 
-    url(r'^$', SportView.as_view(), name=''),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
+    #url(r'^login/$', , name='login'),
 )
