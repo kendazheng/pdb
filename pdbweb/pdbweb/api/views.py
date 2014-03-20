@@ -9,7 +9,6 @@ from pdbweb.api.serializers import LoginObject, LoginSerializer,\
 
 # Create your views here.
 class AccountView(APIView):
-    #resource = AccountResource
 
     def get(self, request):
         """
