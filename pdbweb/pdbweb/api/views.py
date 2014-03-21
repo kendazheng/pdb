@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
+from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from pdbweb.api.serializers import LoginObject, LoginSerializer,\
   RegistrySerializer
 
 
 # Create your views here.
-class AccountView(APIView):
+class AccountAPIView(APIView):
 
     def get(self, request):
         """
@@ -51,3 +52,12 @@ class AccountView(APIView):
         else:
             #return Response({'status':1,'msg':'Input Format were Incorrect!'})  
             return Response(serializer.errors)
+
+class EntertainmentAPIView(generics.ListCreateAPIView):
+    
+    def get_queryset(self):
+        pass
+    
+    def get(self, request):
+        return Response({'aa':'aaa'})    
+    

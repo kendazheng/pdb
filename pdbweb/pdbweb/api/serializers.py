@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from pdbweb.api.models import *
 
 class LoginObject(object):
     def __init__(self, username, password):
@@ -22,3 +23,22 @@ class RegistrySerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         field = ('username', 'password','email') 
+
+class MediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Media
+        field = ('src', 'media_type')
+
+class ContentSerializer(serializers.ModelSerializer):
+    media = MediaSerializer(many=True)    
+    class Meta:
+        model = Content
+        field = ('title', 'desc', 'media')
+
+class ArticleListSerializer(serializers.ModelSerializer):
+    author = RegistrySerializer(many=True)
+    content = ContentSerializer(many=True)
+
+    class Meta:
+        model = Article
+        field = ('author', 'title', 'index', 'content', 'publish_date', 'publish_state')

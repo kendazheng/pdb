@@ -1,15 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
-class Tag(models.Model):
-    name = models.CharField(max_length=20)
-    def __unicode__(self):
-        return self.name
 
+# Create your models here.
 class Article(models.Model):
+    TAG_CHOICE = (
+        ('ENTERTAINMENT','entertainment'),
+        ('SPORT','sport'),
+        ('CULTURE','culture'),
+        ('TRAVEL','travel'),
+        ('TECHNOLOGY','technology'),
+        ('FOOD','food'),
+        ('FASHION','fashion'),
+        ('OTHERS','others')
+    )
     author = models.ForeignKey(User)
-    tag = models.ForeignKey(Tag)
     title = models.CharField(max_length=200)
+    tag = models.CharField(max_length=20,choices=TAG_CHOICE,default='ENTERTAINMENT')
     index = models.URLField(max_length=500)
     publish_date = models.DateTimeField(auto_now=True)
     publish_state = models.BooleanField()
@@ -28,7 +34,7 @@ class Content(models.Model):
 class Media(models.Model):
     MEDIA_CHOICE = (
         ('IMAGE','image'),
-        ('VEDIO','vedio')
+        ('VIDEO','video')
     )
     content = models.ForeignKey(Content)
     src = models.URLField(max_length=500)
