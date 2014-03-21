@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'pdbweb.views.home', name='home'),
 
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
-    url(r'^account/$', AccountView.as_view(), name='login'),
+    url(r'^account/$', AccountView.as_view(), name='account'),
 )
