@@ -1,6 +1,5 @@
 *.py[cod]
 *.swp
-*.db
 *.log
 
 # C extensions
