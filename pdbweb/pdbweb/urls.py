@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from pdbweb.views import *
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -10,15 +11,15 @@ urlpatterns = patterns('',
     # url(r'^pdbweb/', include('pdbweb.foo.urls')),
 
     url(r'^$', include('pdbweb.index.urls')),
+    url(r'^entertainment/$', EntertainmentView.as_view(), name='entertainment'),
+    url(r'^sport/$', SportView.as_view(), name='sport'),
+    url(r'^culture/$', CultureView.as_view(), name='culture'),
+    url(r'^travel/$', TravelView.as_view(), name='travel'),
+    url(r'^technology/$', TechnologyView.as_view(), name='technology'),
+    url(r'^food/$', FoodView.as_view(), name='food'),
+    url(r'^fashion/$', FashionView.as_view(), name='fashion'),
+    url(r'^others/$', OthersView.as_view(), name='others'),
     url(r'^usercenter/$', include('pdbweb.usercenter.urls')),
-    url(r'^entertainment/', include('pdbweb.entertainment.urls')),
-    url(r'^sport/', include('pdbweb.sport.urls')),
-    url(r'^culture/', include('pdbweb.culture.urls')),
-    url(r'^travel/', include('pdbweb.travel.urls')),
-    url(r'^technology/', include('pdbweb.technology.urls')),
-    url(r'^food/', include('pdbweb.food.urls')),
-    url(r'^fashion/', include('pdbweb.fashion.urls')),
-    url(r'^others/', include('pdbweb.others.urls')),
     url(r'^api/', include('pdbweb.api.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
