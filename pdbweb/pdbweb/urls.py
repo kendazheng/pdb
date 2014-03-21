@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'pdbweb.views.home', name='home'),
     # url(r'^pdbweb/', include('pdbweb.foo.urls')),
 
-    url(r'^$', include('pdbweb.index.urls')),
+    url(r'^$', IndexView.as_view(), name='index'),
     url(r'^entertainment/$', EntertainmentView.as_view(), name='entertainment'),
     url(r'^sport/$', SportView.as_view(), name='sport'),
     url(r'^culture/$', CultureView.as_view(), name='culture'),
