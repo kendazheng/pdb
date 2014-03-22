@@ -6,69 +6,69 @@
  <script src="/static/js/entertainmentctrl.js"></script>
 {% endblock %}
 {% block content %}
-<div ng-controller="EntertainmentTopCtrl" class="row entertainment" style="margin-top:20px">
-  <!-- left side content-->
-  <div class="col-md-9">
-    <div class="row">
-      <div class="col-md-12">
-        <span class="text-primary h4">Entertaniment</span>
-        <span class="h6">Songs</span>
-        <span class="h6">Movies</span>
-        <span class="h6">Bagua</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12" style="margin-top:10px">
-        <div class="col-md-12 well well-sm">
-          <div class="col-md-6" style="padding:0px">
-            <img class="carousel-inner img-responsive img-rounded" style="height:300px;overflow:hidden" src="{[{ topArticle.index }]}"/>
-          </div>
-          <div class="col-md-6">
-            <a class="text-primary h4">{[{ topArticle.title }]}</a>
-            <p>{[{ topArticle.summary|limitTo:20 }]}...</p>
-            <p class="h6">{[{ topArticle.publish_date|limitTo:10 }]} by {[{ topArticle.author }]}</p>
-          </div>
+<div ng-controller="EntertainmentTopCtrl" class="row entertainment" >
+  <div style="margin-top:20px">
+    <!-- left side content-->
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="text-primary h4">Entertaniment</span>
+          <span class="h6">Songs</span>
+          <span class="h6">Movies</span>
+          <span class="h6">Bagua</span>
         </div>
-      </div> 
-    </div>
-    <div class="row" ng-repeat="article in articles">
-      <div class="col-md-12">
-        <a class="text-primary h4">{[{ article.title }]}</a>
-        <p>{[{ article.summary|limitTo:20 }]}...</p>
-        <p class="h6">{[{ article.publish_date|limitTo:10 }]} by {[{ article.author }]}</p>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-md-12" style="margin-top:10px">
+          <div class="col-md-12 well well-sm">
+            <div class="col-md-6" style="padding:0px">
+              <img class="carousel-inner img-responsive img-rounded" style="height:300px;overflow:hidden" src="{[{ topArticle.index }]}"/>
+            </div>
+            <div class="col-md-6">
+              <a class="text-primary h4">{[{ topArticle.title }]}</a>
+              <p>{[{ topArticle.summary|limitTo:20 }]}...</p>
+              <p class="h6">{[{ topArticle.publish_date|limitTo:10 }]} by {[{ topArticle.author }]}</p>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <div class="row" ng-repeat="article in articles">
+        <div class="col-md-12">
+          <a class="text-primary h4">{[{ article.title }]}</a>
+          <p>{[{ article.summary|limitTo:20 }]}...</p>
+          <p class="h6">{[{ article.publish_date|limitTo:10 }]} by {[{ article.author }]}</p>
+        </div>
+      </div>
     
-    <div class="row">
-      <div class="col-md-12">
-        <h4 class="text-primary">bbbbbbbbbbbb</h4>
-        <p>aaac  saaa aaaa ssss aaa aaas vsss aaaa aaaa sss a a aaaaa aaaa oo ooaa oooa oooa aaa aa asdds asas aascll assasa</p>
-        <p class="h6">2014/12/13</p>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="text-primary">bbbbbbbbbbbb</h4>
+          <p>aaac  saaa aaaa ssss aaa aaas vsss aaaa aaaa sss a a aaaaa aaaa oo ooaa oooa oooa aaa aa asdds asas aascll assasa</p>
+          <p class="h6">2014/12/13</p>
+        </div>
       </div>
-    </div>
-  </div><!-- end left side content-->
-  <!-- right side navagation-->
-  <div class="col-md-3" role="navigation">
-    <div class="panel panel-primary">
-      <div class="panel-heading">TOP 10 This Week</div>
-      <table class="table table-condensed table-striped table-hover">
-        <tr><td><a>aaaaa</a></td></tr> 
-        <tr><td><a>aaaaaooo</a></td></tr> 
-        <tr><td><a>aaaaappppp</a></td></tr> 
-        <tr><td><a>aaaaa55</a></td></tr> 
-        <tr><td><a>aaaaallllllllllllllll</a></td></tr> 
-        <tr><td><a>aaaaa</a></td></tr> 
-        <tr><td><a>aaaaaooo</a></td></tr> 
-        <tr><td><a>aaaaappppp</a></td></tr> 
-        <tr><td><a>aaaaa55</a></td></tr> 
-        <tr><td><a>aaaaallllllllllllllll</a></td></tr> 
-      </table>
-    </div>
-  </div><!-- right side content-->
-</div><!-- end subject content-->
-<div class="row">
+    </div><!-- end left side content-->
+    <!-- right side navagation-->
+    <div class="col-md-3" role="navigation">
+      <div class="panel panel-primary">
+        <div class="panel-heading">TOP 10 This Week</div>
+        <table class="table table-condensed table-striped table-hover">
+          <tr><td><a>aaaaa</a></td></tr> 
+          <tr><td><a>aaaaaooo</a></td></tr> 
+          <tr><td><a>aaaaappppp</a></td></tr> 
+          <tr><td><a>aaaaa55</a></td></tr> 
+          <tr><td><a>aaaaallllllllllllllll</a></td></tr> 
+          <tr><td><a>aaaaa</a></td></tr> 
+          <tr><td><a>aaaaaooo</a></td></tr> 
+          <tr><td><a>aaaaappppp</a></td></tr> 
+          <tr><td><a>aaaaa55</a></td></tr> 
+          <tr><td><a>aaaaallllllllllllllll</a></td></tr> 
+        </table>
+      </div>
+    </div><!-- right side content-->
+  </div><!-- end subject content-->
   <div class="col-md-12">
-    <div class="well well-sm" style="text-align:center">more...</div>
+    <div class="well well-sm" style="text-align:center"><a ng-click=more()>{[{ load }]}</a></div>
   </div>  
 </div>
 {% endblock %}

@@ -1,11 +1,16 @@
 var entertainmentctrls= angular.module('EntertainmentCtrls', []);
 
 entertainmentctrls.controller('EntertainmentTopCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
+    $scope.articles = [];
+    $scope.next = '';
     $http.get('/api/entertainment/').success(function(articles){
         console.log(articles);
-        $scope.topArticle = articles[0];
-        articles.shift(0);        
-        $scope.articles = articles;
+        $scope.load = "Load More";
+        $scope.topArticle = articles['results'][0];
+        articles['results'].shift(0);        
+        $scope.articles = articles['results'];
+        if(articles['next'])
+            $scope.next = articles['next'];
              
     }).error(function(res){
         
@@ -39,11 +44,24 @@ entertainmentctrls.controller('EntertainmentTopCtrl', ['$scope', '$modal', '$htt
     }).error(function(res){
         console.log(res)
     });*/
-    $http.put('/api/entertainment/2/detail/',data).success(function(res){
+    $http.get('/api/entertainment/2/detail/').success(function(res){
         console.log(res);
     }).error(function(res){
         console.log(res)
     });
+    
+    $scope.more = function(){
+        if($scope.next){
+            $http.get($scope.next).success(function(res){
+                $scope.articles = $scope.articles.concat(res['results'])
+                $scope.next = res['next'];
+                if(!$scope.next)
+                    $scope.load = "The End";
+            }).error(function(res){
+                console.log(res) 
+            });
+        } 
+    }
     
 }]);
 

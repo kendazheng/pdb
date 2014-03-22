@@ -60,6 +60,7 @@ class EntertainmentAPIView(generics.ListCreateAPIView):
     #serializer_class = AlbumSerializer
     #model = Article
     serializer_class = ArticleSerializer 
+    paginate_by = 2
     def get_queryset(self):
         #return Album.objects.all()
         #return Article.objects.all()
