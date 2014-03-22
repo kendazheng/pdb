@@ -1,11 +1,12 @@
+import itertools
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from pdbweb.api.serializers import LoginObject, LoginSerializer,\
-  RegistrySerializer
+from pdbweb.api.models import *
+from pdbweb.api.serializers import *
 
 
 # Create your views here.
@@ -53,11 +54,21 @@ class AccountAPIView(APIView):
             #return Response({'status':1,'msg':'Input Format were Incorrect!'})  
             return Response(serializer.errors)
 
+
 class EntertainmentAPIView(generics.ListCreateAPIView):
-    
+     
+    #serializer_class = AlbumSerializer
+    #model = Article
+    serializer_class = ArticleSerializer 
     def get_queryset(self):
-        pass
-    
-    def get(self, request):
-        return Response({'aa':'aaa'})    
+        #return Album.objects.all()
+        #return Article.objects.all()
+        return Article.objects.all().filter(tag='ENTERTAINMENT',publish_state=True)
+        #return list(itertools.chain(Article.objects.all(), Content.objects.all()))                 
+
+
+class EntertainmentDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    lookup_field = 'id'
+    serializer_class = ArticleSerializer 
+    queryset = Article.objects.all() 
     

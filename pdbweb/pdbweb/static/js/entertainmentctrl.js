@@ -1,133 +1,49 @@
-var entertanmentctrls= angular.module('EntertainmentCtrls', []);
-/*basectrls.controller('TopCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
-    var urlHighLight = function(){
-        var currentNav = $('.main-nav a').filter(function () {
-            var pathname = (this.pathname.charAt(0) == "/") ? this.pathname
-                  : "/" + this.pathname;
-            return window.location.pathname.indexOf(pathname) == 0 && this.pathname.length >= window.location.pathname.length;
-        });
-        currentNav.parent().addClass('active');
+var entertainmentctrls= angular.module('EntertainmentCtrls', []);
 
+entertainmentctrls.controller('EntertainmentTopCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
+    $http.get('/api/entertainment/').success(function(articles){
+        console.log(articles);
+        $scope.topArticle = articles[0];
+        articles.shift(0);        
+        $scope.articles = articles;
+             
+    }).error(function(res){
+        
+    });
+    var data = {
+        'author':'root',
+        'index':'http://h.hiphotos.baidu.com/image/w%3D2048/sign=24753a258501a18bf0eb154faa170608/42166d224f4a20a4e98280ce92529822720ed01f.jpg',
+        'summary':'aaaaaa',
+        'title': 'post test',
+        'contents':[{
+            'title':'asdasdsad',
+            'desc':'ddddddd',
+            'medias':[{
+                'src':'http://h.hiphotos.baidu.com/image/w%3D2048/sign=24753a258501a18bf0eb154faa170608/42166d224f4a20a4e98280ce92529822720ed01f.jpg',
+                'media_type':'IMAGE'
+            }],
+        }],
+        'publish_state':true
     };
-
-
-    $scope.login = function(){
-        $modal.open({
-            backdropFade: true,
-            controller: 'LoginCtrl',
-            templateUrl: '/static/template/login.html'
-        }).result.then(function(user){});
+    /*var data = {
+        'album_name':'root',
+        'artist':'root',
+        'tracks':[{
+            'order':2,
+            'title':'ssss',
+            'duration':2
+        }],
     };
-
-    $scope.registry = function(){
-        $modal.open({
-            backdropFade: true,
-            controller: 'RegistryCtrl',
-            templateUrl: '/static/template/registry.html'
-        }).result.then();
-    };
+    $http.post('/api/entertainment/',data).success(function(res){
+        console.log(res);
+    }).error(function(res){
+        console.log(res)
+    });*/
+    $http.put('/api/entertainment/2/detail/',data).success(function(res){
+        console.log(res);
+    }).error(function(res){
+        console.log(res)
+    });
     
-    urlHighLight();
 }]);
-
-basectrls.controller('LoginCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http){
-    $scope.alerts = [];
-    $scope.input= {};
-    $scope.cancel = function(){
-        $modalInstance.dismiss();
-    };
-
-    $scope.ok = function(){
-        var username = $scope.input.username;
-        var password = $scope.input.password;
-        if(username && password){
-            var user = {
-                'username':username,
-                'password':password
-            };
-            var user = '?username=' + username + '&&password=' + password;
-            $http.get('/api/account/' + user).success(function(res){
-                if(res['status'] == 0){
-                    $modalInstance.dismiss();
-                    window.location = '/';
-                }
-                else{
-                    $scope.alerts.push({
-                        'msg':res['msg'],
-                        'type':'alert-danger'
-                    });
-                }    
-            }).error(function(res){
-                $scope.alerts.push({
-                    'msg':res['msg'],
-                    'type':'alert-danger'
-                });
-            });        
-        }
-        else
-            $scope.alerts.push({
-                'msg':'Username and Password should not be blank!',
-                'type':'alert-danger'
-            });
-            
-    };
-
-    $scope.closeAlert = function(index){
-        $scope.alerts.splice(index);
-    };
-
-    $scope.findPassword = function(){
-        window.open('http://www.baidu.com');
-    };
-}]);
-
-basectrls.controller('RegistryCtrl', ['$scope', '$modalInstance', '$http', function($scope, $modalInstance, $http){
-    //$scope.alerts = [{'msg':'aaaaaaaaaaaa','type':'alert-warning'}];
-    $scope.alerts = [];
-    $scope.input= {};
-    $scope.cancel = function(){
-        $modalInstance.dismiss();
-    };
-
-    $scope.ok = function(){
-        var username = $scope.input.username;
-        var email = $scope.input.email;
-        var password= $scope.input.password;
-        var password_again = $scope.input.password_again;
-        console.log(username);
-        console.log(email);
-        console.log(password);
-        console.log(password_again);
-        if(username && password && password_again && email){
-            var user = {
-                'username': username,
-                'password': password,
-                'password_again': password_again,
-                'email': email
-            }
-            $http.post('/api/account/',user).success(function(res){
-                $modalInstance.dismiss();
-                window.location = '/'
-            }).error(function(res){
-            
-            });
-        }
-        else
-            $scope.alerts.push({
-                'msg':'Username,Password and Email should not be blank!',
-                'type':'alert-danger'
-            });
-            
-    };
-
-    $scope.closeAlert = function(index){
-        $scope.alerts.splice(index);
-    };
-
-    $scope.findPassword = function(){
-        window.open('http://www.baidu.com');
-    };
-
-}]);*/
-
 

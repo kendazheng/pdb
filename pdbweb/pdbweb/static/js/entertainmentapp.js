@@ -9,3 +9,6 @@ entertainmentapp.config(function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
 });
 
+angular.element(document).ready(function(){
+    angular.bootstrap($('.entertainment')[0],['EntertainmentApp']);
+});

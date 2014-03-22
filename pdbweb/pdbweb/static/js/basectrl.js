@@ -49,7 +49,7 @@ basectrls.controller('LoginCtrl', ['$scope', '$modalInstance', '$http', function
             $http.get('/api/account/' + user).success(function(res){
                 if(res['status'] == 0){
                     $modalInstance.dismiss();
-                    window.location = '/';
+                    location.reload() ;
                 }
                 else{
                     $scope.alerts.push({
@@ -107,7 +107,7 @@ basectrls.controller('RegistryCtrl', ['$scope', '$modalInstance', '$http', funct
             }
             $http.post('/api/account/',user).success(function(res){
                 $modalInstance.dismiss();
-                window.location = '/'
+                location.reload();
             }).error(function(res){
             
             });

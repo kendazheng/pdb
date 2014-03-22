@@ -22,23 +22,34 @@ class LoginSerializer(serializers.Serializer):
 class RegistrySerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        field = ('username', 'password','email') 
+        fields = ('username', 'password','email') 
 
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media
-        field = ('src', 'media_type')
+        fields = ('src', 'media_type')
 
 class ContentSerializer(serializers.ModelSerializer):
-    media = MediaSerializer(many=True)    
+    medias = MediaSerializer(many=True)    
     class Meta:
         model = Content
-        field = ('title', 'desc', 'media')
+        fields = ('title', 'desc', 'medias')
 
-class ArticleListSerializer(serializers.ModelSerializer):
-    author = RegistrySerializer(many=True)
-    content = ContentSerializer(many=True)
-
+class ArticleSerializer(serializers.ModelSerializer):
+    contents = ContentSerializer(many=True)
+    author = serializers.SlugRelatedField(slug_field='username')
     class Meta:
         model = Article
-        field = ('author', 'title', 'index', 'content', 'publish_date', 'publish_state')
+        fields = ('title', 'author', 'index', 'summary', 'publish_date', 'publish_state', 'contents')
+
+class TrackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Track
+        fields = ('order', 'title', 'duration')
+
+class AlbumSerializer(serializers.ModelSerializer):
+    tracks = TrackSerializer(many=True)
+    artist = serializers.SlugRelatedField(slug_field='username')
+    class Meta:
+        model = Album
+        fields = ('album_name', 'artist', 'tracks')

@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
     url(r'^account/$', AccountAPIView.as_view(), name='account-api'),
     url(r'^entertainment/$', EntertainmentAPIView.as_view(), name='entertainment-api'),
+    url(r'^entertainment/(?P<id>\d+)/detail/$', EntertainmentDetailAPIView.as_view(), name='entertainment-api'),
 )
