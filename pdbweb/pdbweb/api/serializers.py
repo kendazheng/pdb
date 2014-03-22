@@ -40,7 +40,8 @@ class ArticleSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(slug_field='username')
     class Meta:
         model = Article
-        fields = ('title', 'author', 'index', 'summary', 'publish_date', 'publish_state', 'contents')
+        fields = ('id', 'title', 'author', 'index', 'summary', 'publish_date', 'publish_state', 'contents')
+        read_only_fields = ('id',)
 
 class TrackSerializer(serializers.ModelSerializer):
     class Meta:

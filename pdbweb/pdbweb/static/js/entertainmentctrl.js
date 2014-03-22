@@ -19,7 +19,7 @@ entertainmentctrls.controller('EntertainmentTopCtrl', ['$scope', '$modal', '$htt
         'author':'root',
         'index':'http://h.hiphotos.baidu.com/image/w%3D2048/sign=24753a258501a18bf0eb154faa170608/42166d224f4a20a4e98280ce92529822720ed01f.jpg',
         'summary':'aaaaaa',
-        'title': 'post test',
+        'title': 'post test id',
         'contents':[{
             'title':'asdasdsad',
             'desc':'ddddddd',
