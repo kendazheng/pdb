@@ -6,4 +6,6 @@ the codes for pandianba website
 
 pandianba is a website developed with django
 
-只能在抽下班时间和周末进行设计设编码，使用Django+Djangorestframework+angularjs+Bootstrap，尽量减少编码时间吧，由于以前用得Djangorestframe版本比较低，现在高版本的有点用不来，angularjs的一些高级功能也想尝试一下，所以基本就是一边学，一边做，头疼....
+只能抽下班时间和周末进行设计设编码，使用Django+Djangorestframework+angularjs+Bootstrap，尽量减少编码时间吧，由于以前用得Djangorestframework版本比较低，现在高版本的有点用不来，angularjs的一些高级功能也想尝试一下，所以基本就是一边学，一边做，头疼....
+
+架构也比较简单，前台界面采用Bootstrap，数据获取通过angularjs的ajax方法，django负责基本页面渲染和数据库，Djangorestframework提供restful方式的获取数据api。
