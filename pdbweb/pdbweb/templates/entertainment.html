@@ -25,7 +25,7 @@
               <img class="carousel-inner img-responsive img-rounded" style="height:300px;overflow:hidden" src="{[{ topArticle.index }]}"/>
             </div>
             <div class="col-md-6">
-              <a class="text-primary h4">{[{ topArticle.title }]}</a>
+              <a href="/{[{ topArticle.tag|lowercase }]}/detail/{[{ topArticle.id }]}/" class="text-primary h4">{[{ topArticle.title }]}</a>
               <p>{[{ topArticle.summary|limitTo:20 }]}...</p>
               <p class="h6">{[{ topArticle.publish_date|limitTo:10 }]} by {[{ topArticle.author }]}</p>
             </div>

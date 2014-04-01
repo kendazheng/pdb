@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
-
+from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from pdbweb.views import *
@@ -10,15 +11,17 @@ urlpatterns = patterns('',
     # url(r'^$', 'pdbweb.views.home', name='home'),
     # url(r'^pdbweb/', include('pdbweb.foo.urls')),
 
-    url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^entertainment/$', EntertainmentView.as_view(), name='entertainment'),
-    url(r'^sport/$', SportView.as_view(), name='sport'),
-    url(r'^culture/$', CultureView.as_view(), name='culture'),
-    url(r'^travel/$', TravelView.as_view(), name='travel'),
-    url(r'^technology/$', TechnologyView.as_view(), name='technology'),
-    url(r'^food/$', FoodView.as_view(), name='food'),
-    url(r'^fashion/$', FashionView.as_view(), name='fashion'),
-    url(r'^others/$', OthersView.as_view(), name='others'),
+    url(r'^$', RedirectView.as_view(url='/index/')),
+    url(r'^index/$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^entertainment/$', TemplateView.as_view(template_name='entertainment.html'), name='entertainment'),
+    url(r'^sport/$', TemplateView.as_view(template_name='sport.html'), name='sport'),
+    url(r'^culture/$', TemplateView.as_view(template_name='culture.html'), name='culture'),
+    url(r'^travel/$', TemplateView.as_view(template_name='travel.html'), name='travel'),
+    url(r'^technology/$', TemplateView.as_view(template_name='technology.html'), name='technology'),
+    url(r'^food/$', TemplateView.as_view(template_name='food.html'), name='food'),
+    url(r'^fashion/$', TemplateView.as_view(template_name='fashion.html'), name='fashion'),
+    url(r'^others/$', TemplateView.as_view(template_name='others.html'), name='others'),
+    url(r'^(?P<tag>\w+)/detail/(?P<id>\d+)/$', ArticleDetailView.as_view(), name='detail'),
     url(r'^usercenter/$', include('pdbweb.usercenter.urls')),
     url(r'^api/', include('pdbweb.api.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
