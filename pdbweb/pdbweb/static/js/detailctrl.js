@@ -1,6 +1,6 @@
-var entertainmentctrls= angular.module('EntertainmentCtrls', []);
+var detailctrls= angular.module('DetailCtrls', []);
 
-entertainmentctrls.controller('EntertainmentCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
+detailctrls.controller('DetailCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
     $scope.articles = [];
     $scope.next = '';
     $http.get('/api/entertainment/').success(function(articles){

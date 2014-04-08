@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Entertainment" %}{% endblock %}
+{% block js %}
+ <script src="/static/js/detailapp.js"></script>
+ <script src="/static/js/detailctrl.js"></script>
+{% endblock %}
+<script>
+    var Article_Tag = '{{ article_tag }}';
+    var Article_Id= '{{ article_id }}';
+</script>
+{% block content %}
+<div ng-controller="DetailCtrl" class="row article_detail row-offcanvas row-offcanvas-right">
+  <div style="margin-top:20px">
+    <!-- left side content-->
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2" style="margin-top:10px;text-align:right">
+          <img src="http://c.hiphotos.baidu.com/image/w%3D2048/sign=2ee464855cdf8db1bc2e7b643d1bdc54/9e3df8dcd100baa1bf9522a64510b912c8fc2e75.jpg" style="width:60px;height:60px" class="img-rounded" />
+          <h4 class="">Kenda</h4>
+          <h5 class="text-muted"><em>this is a test user. He has a lot of dream. And try his best to realize.</em></h5> 
+        </div> 
+        <div class="col-md-8" style="margin-left:20px">
+          <div class="row">
+            <h3 class="text-info"><em>2013-2014 NBA DUNK TOP 10</em></h3>
+            <p class="">
+              <span class="text-muted">Tag : Entertainment</span>
+              <span class="text-muted" style="margin-left:10px">Publish : 2014-04-08</span>
+              <span class="text-muted" style="margin-left:10px">Total : 2234</span>
+              <span class="text-muted" style="margin-left:10px">Click: 30</span>
+            </p>
+            <p>This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala</p>
+            <div>
+              <p>TOP 10 Blak GreenFen</p>
+              <img src="http://c.hiphotos.baidu.com/image/w%3D2048/sign=2ee464855cdf8db1bc2e7b643d1bdc54/9e3df8dcd100baa1bf9522a64510b912c8fc2e75.jpg" />
+              <p>This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some</p>
+            </div>
+            <div>
+              <p>TOP 9 Kobbe Branent</p>
+              <img src="http://c.hiphotos.baidu.com/image/w%3D2048/sign=2ee464855cdf8db1bc2e7b643d1bdc54/9e3df8dcd100baa1bf9522a64510b912c8fc2e75.jpg" />
+              <p>This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some balala... This is the abstact of the article, some instroduction and some</p>
+            </div>
+          <div>
+        </div> 
+      </div>
+    </div><!-- end left side content-->
+  </div><!-- end subject content-->
+  <div class="col-md-12">
+    <div class="well well-sm" style="text-align:center"><a ng-click=more()>{[{ load }]}</a></div>
+  </div>  
+</div>
+{% endblock %}
+

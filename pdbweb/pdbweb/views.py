@@ -16,4 +16,9 @@ class IndexView(TemplateView):
         return render_to_response(self.template_name,RequestContext(request,{}))
 
 class ArticleDetailView(TemplateView):
-    pass 
+    logger = logging.getLogger('pdbweb')
+    template_name = 'detail.html'
+
+    def get(self, request, **kwargs):
+        return render_to_response(self.template_name,
+          RequestContext(request,{'article_tag':kwargs['tag'],'article_id':kwargs['id']}))
