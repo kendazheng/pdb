@@ -6,7 +6,7 @@ import traceback
 import os
 from optparse import OptionParser
 
-from file_client import fetch
+from file_client import fetchAll
 
 def args_callback(option, opt, value, parser):
     setattr(parser.values, option.dest, value.split(','))
@@ -28,5 +28,5 @@ if __name__ == '__main__':
         params['hosts'] = options.hosts
     if options.dirs:
         params['dirs'] = options.dirs
-
-    fetch(**params)
+    code, msg = fetchAll(**params)
+    print msg
