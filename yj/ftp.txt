@@ -1,0 +1,4 @@
+open 172.31.2.23 21
+eason
+123456
+put b.txt
