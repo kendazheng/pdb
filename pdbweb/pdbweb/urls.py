@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 # Uncomment the next two lines to enable the admin:
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^food/$', TemplateView.as_view(template_name='food.html'), name='food'),
     url(r'^fashion/$', TemplateView.as_view(template_name='fashion.html'), name='fashion'),
     url(r'^others/$', TemplateView.as_view(template_name='others.html'), name='others'),
+    url(r'^publish/$', login_required(TemplateView.as_view(template_name='publish.html')), name='publish'),
     url(r'^(?P<tag>\w+)/detail/(?P<id>\d+)/$', ArticleDetailView.as_view(), name='detail'),
     url(r'^usercenter/$', include('pdbweb.usercenter.urls')),
     url(r'^api/', include('pdbweb.api.urls')),

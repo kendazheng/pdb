@@ -1,19 +1,11 @@
 var detailctrls= angular.module('DetailCtrls', []);
 
 detailctrls.controller('DetailCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
-    $scope.articles = [];
     $scope.next = '';
     var article_tag = Article_Tag;
     var article_id = Article_Id;
-    $http.get('/api/' + article_tag + '/detail/' + article_id + '/').success(function(articles){
-        console.log(articles);
-        $scope.load = "Load More";
-        $scope.topArticle = articles['results'][0];
-        articles['results'].shift(0);        
-        $scope.articles = articles['results'];
-        if(articles['next'])
-            $scope.next = articles['next'];
-             
+    $http.get('/api/' + article_tag + '/' + article_id + '/detail/').success(function(article){
+        $scope.article = article;
     }).error(function(res){
         
     });

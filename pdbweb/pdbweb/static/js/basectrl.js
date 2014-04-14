@@ -4,7 +4,6 @@ basectrls.controller('TopCtrl', ['$scope', '$modal', '$http', function($scope, $
         var currentNav = $('.main-nav a').filter(function () {
             var pathname = (this.pathname.charAt(0) == "/") ? this.pathname
                   : "/" + this.pathname;
-            console.log(pathname);
             return window.location.pathname.indexOf(pathname) == 0 && pathname.length <= window.location.pathname.length;
         });
         currentNav.parent().addClass('active');
