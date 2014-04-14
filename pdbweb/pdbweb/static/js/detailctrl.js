@@ -3,7 +3,9 @@ var detailctrls= angular.module('DetailCtrls', []);
 detailctrls.controller('DetailCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
     $scope.articles = [];
     $scope.next = '';
-    $http.get('/api/entertainment/').success(function(articles){
+    var article_tag = Article_Tag;
+    var article_id = Article_Id;
+    $http.get('/api/' + article_tag + '/detail/' + article_id + '/').success(function(articles){
         console.log(articles);
         $scope.load = "Load More";
         $scope.topArticle = articles['results'][0];

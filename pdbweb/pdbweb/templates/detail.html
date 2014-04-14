@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Entertainment" %}{% endblock %}
+<script>
+    var Article_Tag = "{{ article_tag }}";
+    var Article_Id= "{{ article_id }}";
+</script>
 {% block js %}
  <script src="/static/js/detailapp.js"></script>
  <script src="/static/js/detailctrl.js"></script>
 {% endblock %}
-<script>
-    var Article_Tag = '{{ article_tag }}';
-    var Article_Id= '{{ article_id }}';
-</script>
 {% block content %}
 <div ng-controller="DetailCtrl" class="row article_detail row-offcanvas row-offcanvas-right">
   <div style="margin-top:20px">
