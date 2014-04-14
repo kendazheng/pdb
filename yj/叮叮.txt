@@ -1,0 +1,14 @@
+Client端
+1 装python开发环境
+  运行python ez_setup.py
+  easy_install pyftpdlib
+2 部署ftp，b.txt与ftp.py同一目录
+  python ftp.py 
+3 fetchcmd.py telnet.py clinet.ini 放在同一目录
+  python fetchcmd.py -H -U -P
+  python fetchcmd.py (client.ini时)
+
+Server端
+telnet服务要启用，用户名和密码 test 123456；aaa.bat程序放在用户的根目录下
+ftp.txt：用户名和密码是在ftp.py中写死的
+aaa.bat最后一行 

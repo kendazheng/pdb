@@ -41,7 +41,7 @@ def fetchAll(**kwargs):
         logging.error(error_log)
         logging.error(traceback.format_exc())
         return 1, error_log
-    
+     
     threads = [threading.Thread(target=fetchOne,kwargs={'host':item,\
       'username':kwargs['username'],'password':kwargs['password'],'result':result_queue}) for item in kwargs['hosts']]
     for t in threads:
@@ -57,7 +57,7 @@ def fetchAll(**kwargs):
         if result['status']:
             error_res = error_res + 'Fetch File From Server:%s Failed!\n' %(result['host']) 
             status =1    
-
+    
     if not status:
         return 0, 'Fetch Task Execute Success!'
     else:
@@ -76,12 +76,15 @@ def fetchOne(**kwargs):
         tn.read_until('password: ')
         tn.write(kwargs['password'].encode('ascii') + '\r')
  
-        # 登录完毕后，执行ls命令
+        # 登录完毕后，执行COMMAND命令
         tn.expect([b">"])
         tn.write(COMMAND + '\n\r')
- 
+       
+        # 保持连接，确定文件已上传ftp server完毕 
+        tn.read_until('bye.' + '\r')
+
         #命令执行完毕后，终止Telnet连接（或输入exit退出）
-        tn.close() # tn.write('exit\n')
+        tn.write('exit' + '\n\r')
         received_log = 'Received File From Server:"%s" SUCCESS!' %(HOST)
         logging.debug(received_log)
         kwargs['result'].put({
