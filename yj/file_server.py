@@ -17,9 +17,20 @@ class MyHandler(BaseRequestHandler):
         logging.debug(handler_info) 
         res = 'Server has received success!'
         file_name = 'file_name'.rjust(50)
-        file_length = '8'.rjust(8)
-        file_content = 'file_content'
+        file_content = ''
+
+        for i in range(1024):
+            file_content = file_content + 'file_content' + '\n'
+        file_length = str(len(file_content)).rjust(8)
+        print file_length
         data = file_name + file_length + file_content
+        fp = open('file_name_server','w')
+        fp.write(file_content.strip())
+
+        
+        '''
+        excute bat script here and read the file content to send
+        '''  
         self.request.sendall(data)
 
 class ThreadTCPServer(ThreadingMixIn, TCPServer):
@@ -27,6 +38,6 @@ class ThreadTCPServer(ThreadingMixIn, TCPServer):
  
 if __name__ == '__main__':
     HOST, PORT = "127.0.0.1", 12345
-
+    print "file server is listening %s:%s" %(HOST, PORT)
     server = ThreadTCPServer((HOST, PORT), MyHandler)
     server.serve_forever()

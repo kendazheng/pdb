@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import socket
+import string
 import sys
 import logging
 import traceback
@@ -42,6 +43,7 @@ def fetchAll(**kwargs):
     for t in threads:
         t.start()
     
+    #wait for child threads complete
     for t in threads:
         t.join()
 
@@ -68,11 +70,8 @@ def fetchOne(**kwargs):
         try:
             sock.connect((HOST,PORT))
             file_name = sock.recv(50).strip()
-            file_length = sock.recv(8).strip()
-            file_content = sock.recv(1024).strip()
-            print file_name
-            print file_length
-            print file_content
+            file_length = string.atoi(sock.recv(8).strip())
+            file_content = sock.recv(file_length).strip()
             received_log = 'Received "%s" From Server:"%s" SUCCESS, File Length is %s' %(file_name, HOST, file_length)
             print received_log
             logging.debug(received_log)
