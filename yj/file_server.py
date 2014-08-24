@@ -1,5 +1,5 @@
 #coding=utf-8
-import threading, logging, traceback
+import threading, logging, traceback, subprocess
 from SocketServer import BaseRequestHandler, TCPServer, ThreadingMixIn
 
 logging.basicConfig(level=logging.DEBUG,
@@ -16,21 +16,16 @@ class MyHandler(BaseRequestHandler):
         handler_info = "{0} hanlde request from {1}".format(c_thread.name, self.client_address[0])
         logging.debug(handler_info) 
         res = 'Server has received success!'
-        file_name = 'file_name'.rjust(50)
-        file_content = ''
-
-        for i in range(1024):
-            file_content = file_content + 'file_content' + '\n'
-        file_length = str(len(file_content)).rjust(8)
-        print file_length
-        data = file_name + file_length + file_content
-        fp = open('file_name_server','w')
-        fp.write(file_content.strip())
-
-        
         '''
         excute bat script here and read the file content to send
-        '''  
+        '''
+        p = subprocess.Popen("aa.bat",stdin=subprocess.PIPE, stdout=subprocess.PIPE, shell=False)
+        echo_name = p.stdout.readlines()[-1].strip()
+        fp = open(echo_name,'r')
+        file_content = fp.read()
+        file_name = echo_name.rjust(50)
+        file_length = str(len(file_content)).rjust(8)
+        data = file_name + file_length + file_content
         self.request.sendall(data)
 
 class ThreadTCPServer(ThreadingMixIn, TCPServer):

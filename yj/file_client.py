@@ -71,14 +71,14 @@ def fetchOne(**kwargs):
             sock.connect((HOST,PORT))
             file_name = sock.recv(50).strip()
             file_length = string.atoi(sock.recv(8).strip())
-            file_content = sock.recv(file_length).strip()
+            file_content = sock.recv(file_length)
             received_log = 'Received "%s" From Server:"%s" SUCCESS, File Length is %s' %(file_name, HOST, file_length)
             print received_log
             logging.debug(received_log)
             for item in kwargs['dirs']:
-                fp = open(os.path.join(item, file_name),'w')
+                fp = open(os.path.join(item, 'fetch_result.txt'),'a')
                 fp.write(file_content)
-                saved_log = 'Saved the file into "%s" direction as "%s" SUCCESS!' %(item, file_name)
+                saved_log = 'Saved the file into "%s" direction SUCCESS!' %(item)
                 print saved_log
                 logging.debug(saved_log)
             
