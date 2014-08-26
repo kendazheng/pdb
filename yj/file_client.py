@@ -41,6 +41,9 @@ def fetchAll(**kwargs):
             error_log = '"%s" is not an available director!' % item
             logging.error(error_log)
             return 1, error_log
+        else:
+            fp = open(os.path.join(item, 'fetch_result.txt'), 'w')
+            fp.close()
     
     threads = [
         threading.Thread(
