@@ -97,6 +97,7 @@ def fetchOne(**kwargs):
         for item in kwargs['dirs']:
             fp = open(os.path.join(item, 'fetch_result.txt'), 'a')
             fp.write(file_content)
+            fp.close()
             saved_log = 'Saved the file into "%s" direction SUCCESS!' % (item)
             print saved_log
             logging.debug(saved_log)

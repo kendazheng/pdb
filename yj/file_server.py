@@ -25,6 +25,7 @@ class MyHandler(BaseRequestHandler):
         # modify its name  as you like
         c_fp = open('config.ini', 'w')
         c_fp.write(config_content)
+        c_fp.close()
 
         # excute bat script here and read the file content to send
         p = subprocess.Popen("./aa.sh", stdin=subprocess.PIPE, stdout=subprocess.PIPE, shell=False)
