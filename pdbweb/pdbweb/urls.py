@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from pdbweb.views import *
 admin.autodiscover()
@@ -24,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^others/$', TemplateView.as_view(template_name='others.html'), name='others'),
     url(r'^publish/$', login_required(TemplateView.as_view(template_name='publish.html')), name='publish'),
     url(r'^(?P<tag>\w+)/detail/(?P<id>\d+)/$', ArticleDetailView.as_view(), name='detail'),
-    url(r'^usercenter/$', include('pdbweb.usercenter.urls')),
+    url(r'^usercenter/', include('pdbweb.usercenter.urls')),
     url(r'^api/', include('pdbweb.api.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

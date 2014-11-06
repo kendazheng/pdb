@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Publish Article" %}{% endblock %}
+{% block js %}
+ <script src="/static/lib/colorpicker/bootstrap-colorpicker-module.js"></script>
+ <script src="/static/js/angular-wysiwyg.js"></script>
+ <script src="/static/js/publishapp.js"></script>
+ <script src="/static/js/publishctrl.js"></script>
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/lib/font-awesome-4.2.0/css/font-awesome.css">
+{% endblock %}
+{% block content %}
+<div ng-controller="PublishCtrl" class="row publish col-md-12">
+   <wysiwyg textarea-id="question" textarea-class="form-control"  textarea-height="180px" textarea-name="textareaQuestion" textarea-required ng-model="data.text" enable-bootstrap-title="true"></wysiwyg>
+</div>
+{% endblock %}
