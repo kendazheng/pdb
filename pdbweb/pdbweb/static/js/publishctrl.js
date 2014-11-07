@@ -1,9 +1,6 @@
-var publishctrls= angular.module('PublishCtrls', ['colorpicker.module', 'wysiwyg.module']);
+var publishctrls= angular.module('PublishCtrls', ['textAngular']);
 
 publishctrls.controller('PublishCtrl', ['$scope', '$modal', '$http', function($scope, $modal, $http){
-    $scope.data = {
-        text: "hello"
-    }
-    $scope.textareaHeight = '300px';
+    $scope.data = "hello";
 }]);
 
