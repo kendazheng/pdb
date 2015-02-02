@@ -2,16 +2,83 @@
 {% load i18n %}
 {% block title %}{% trans "Publish Article" %}{% endblock %}
 {% block js %}
- <script src="/static/lib/colorpicker/bootstrap-colorpicker-module.js"></script>
- <script src="/static/js/angular-wysiwyg.js"></script>
  <script src="/static/js/publishapp.js"></script>
  <script src="/static/js/publishctrl.js"></script>
+ <script src="/static/bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+ <script src="/static/bower_components/textAngular/dist/textAngular.min.js"></script>
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="/static/lib/font-awesome-4.2.0/css/font-awesome.css">
+<link rel="stylesheet" href="/static/lib/font-awesome-4.2.0/css/font-awesome.min.css">
 {% endblock %}
 {% block content %}
-<div ng-controller="PublishCtrl" class="row publish col-md-12">
-   <wysiwyg textarea-id="question" textarea-class="form-control"  textarea-height="180px" textarea-name="textareaQuestion" textarea-required ng-model="data.text" enable-bootstrap-title="true"></wysiwyg>
-</div>
+  <div ng-controller="PublishCtrl" class="row publish">
+    <div class="row col-md-2">
+      <div class="panel panel-primary">
+        <div class="panel-heading">UserCenter</div>
+        <table class="table table-condensed table-striped table-hover">
+          <tr><td><a>my article</a></td></tr> 
+          <tr><td><a>publish</a></td></tr> 
+          <tr><td><a>messages <span class="badge">42</span></a></td></tr> 
+          <tr><td><a>modify personal</a></td></tr> 
+          <tr><td><a>modify password</a></td></tr> 
+        </table>
+      </div>
+    </div>
+
+    <div class="row col-md-10">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label form-label-font">Title</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" placeholder="Title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="summary" class="col-sm-2 control-label form-label-font">Summary</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" rows="3" id="summary" placeholder="Summary"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cover_url" class="col-sm-2 control-label form-label-font">CoverIMG URL</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="cover_url" value="http://">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label class="control-label form-label-font"><input type="checkbox">Default CoverIMG</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="article_class" class="col-sm-2 control-label form-label-font">Article Class</label>
+          <div class="col-sm-10">
+            <select id="article_class" class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="article" class="col-sm-2 control-label form-label-font">Article</label>
+          <div class="col-sm-10">
+            <div id="article" text-angular ng-model="data" ta-toolbar="[['h3','h4','h5','p','pre','quote'],['bold','italics','ul','ol','justifyLeft','justifyRight','justifyCenter'],['html','insertImage','insertLink','insertVideo']]" ta-toolbar-button-class="btn btn-default btn-wysiwyg"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary">Publish</button>
+            <button class="btn btn-primary">Preview</button>
+            <button class="btn btn-primary">Save Draft</button>
+          </div>
+        </div>
+      </form>
+
+    </div> 
+  </div>
 {% endblock %}
