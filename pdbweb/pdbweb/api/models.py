@@ -73,7 +73,7 @@ class Draft(models.Model):
         ('FASHION', 'fashion'),
         ('OTHERS', 'others')
     )
-    author = models.ForeignKey(User, related_name='article')
+    author = models.ForeignKey(User, related_name='draft')
     title = models.CharField(max_length=200)
     tag = models.CharField(max_length=20, choices=TAG_CHOICE, default='ENTERTAINMENT')
     index = models.URLField(max_length=500)

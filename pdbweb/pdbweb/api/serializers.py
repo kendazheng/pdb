@@ -68,6 +68,7 @@ class AlbumSerializer(serializers.ModelSerializer):
 
 
 class DraftSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(slug_field='username')
+
     class Meta:
         model = Draft
-        fields = ()

@@ -11,3 +11,11 @@ class PublishView(TemplateView):
     
     def get(self, request):
         return render_to_response(self.template_name, RequestContext(request, {}))
+
+
+class DraftView(TemplateView):
+    logger = logging.getLogger('pdbweb')
+    template_name = 'usercenter/publish.html'
+    
+    def get(self, request):
+        return render_to_response(self.template_name, RequestContext(request, {}))
